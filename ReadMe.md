@@ -1,38 +1,37 @@
-# 🚗 ATCC + ANPR Streamlit Dashboard  
-A unified dashboard for *Automatic Traffic Counting & Classification (ATCC)* and *Automatic Number Plate Recognition (ANPR)* built using *YOLOv8* and *Streamlit*.
+🚦 AI Traffic Analytics (ATCC & ANPR)
+A real-time traffic monitoring system that integrates Automatic Traffic Counting and Classification (ATCC) with Automatic Number Plate Recognition (ANPR). Built using YOLOv8 for vehicle detection and Streamlit for the interactive dashboard.
 
-This project provides:
-- Vehicle detection & classification  
-- Number plate detection  
-- Image + video inference support  
-- A simple and clean Streamlit UI  
-- Easy model integration using .pt YOLO weights  
+📝 Project Overview
+This project aims to automate traffic analysis by processing video feeds to detect vehicles, classify them (Car, Truck, Bus, Motorcycle), and extract license plate numbers. It provides a visual dashboard for traffic authorities or urban planners to monitor road usage and congestion.
 
----
+Key Features
+Real-Time Vehicle Detection: Identifies and tracks vehicles in video streams.
 
-## ⭐ Features  
-### 🔵 ATCC (Automatic Traffic Counting & Classification)
-- Detects vehicles (car, truck, bus, bike…)
-- Counts total vehicles
-- Works on *images* and *videos*
-- YOLOv8 backend for fast and accurate detection
+Multi-Class Classification: Distinguishes between Cars, Trucks, Buses, and Motorcycles.
 
-### 🟢 ANPR (Automatic Number Plate Recognition)
-- Detects license plates
-- Extracts plates using YOLO
-- Works on images and videos
-- Ready for OCR integration
+Traffic Counting (ATCC): Maintains a live count of vehicles passing through the frame.
 
-### 🟣 Streamlit Dashboard
-- User-friendly UI  
-- Upload media directly  
-- Choose model paths  
-- Real-time output visualization  
+License Plate Recognition (ANPR): Extracts and logs license plate text from detected vehicles.
 
----
+Interactive Dashboard: A user-friendly web interface powered by Streamlit to upload videos and view analytics.
 
-## 📁 Project Structure
+Data Visualization: Live metrics and visual bounding boxes.
 
+📸 Demo
+[Insert a screenshot of your Streamlit Dashboard here] [Insert a sample processed image with bounding boxes here]
+
+🛠 Tech Stack
+Language: Python 3.11+
+
+Computer Vision: OpenCV, Ultralytics YOLOv8
+
+Dashboard Framework: Streamlit
+
+ANPR Engine: [Mention your ANPR lib here, e.g., EasyOCR / Tesseract / LPRNet]
+
+Data Manipulation: NumPy, Pandas
+
+📂 Project Structure
 streamlit_app/
 │── app/
 │ ├── anpr.py # ANPR model wrapper
@@ -46,3 +45,67 @@ streamlit_app/
 │
 ├── requirements.txt
 └── README.md
+🚀 Installation & Setup
+Follow these steps to run the dashboard locally.
+
+1. Clone the Repository
+Bash
+
+git clone https://github.com/your-username/traffic-analytics.git
+cd Traffic_Dashboard
+2. Create a Virtual Environment (Optional but Recommended)
+Bash
+
+python -m venv venv
+# Windows
+venv\Scripts\activate
+# Mac/Linux
+source venv/bin/activate
+3. Install Dependencies
+Bash
+
+pip install -r requirements.txt
+4. Add Your Model
+Place your trained YOLOv8 model file (best.pt) inside the models/ directory.
+
+Note: The model was trained on the BDD100K dataset using Kaggle GPUs.
+
+🖥 Usage
+To start the dashboard, run the following command in your terminal:
+
+Bash
+
+streamlit run app.py
+A browser tab will open (usually at http://localhost:8501).
+
+Use the Sidebar to upload a traffic video file (.mp4, .avi).
+
+Adjust the Confidence Threshold slider to filter weak detections.
+
+Watch the live processing and statistics update in real-time.
+
+📊 Dataset & Training
+The ATCC model was trained using the BDD100K (Berkeley DeepDrive) dataset.
+
+Training Images: ~7,000 images (Subset of 10k train set).
+
+Validation Images: 10,000 images (Official Val set).
+
+Classes: Car, Truck, Bus, Motorcycle.
+
+Training Platform: Kaggle (Tesla T4 GPUs).
+
+Epochs: 50 (with Early Stopping).
+
+🔮 Future Improvements
+[ ] Integration with live IP Camera feeds (RTSP).
+
+[ ] Export analytics data to CSV/Excel.
+
+[ ] Speed estimation logic.
+
+[ ] Night-mode enhancement for ANPR.
+
+
+📜 License
+Distributed under the MIT License. See LICENSE for more information.
